@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import "../globals.css";
-import RouteProtection from "../context/RouteProtection";
+import Providers from "../context/Providers";
+import { Toaster } from "react-hot-toast";
+import Sidebar from "../components/ui/Sidebar";
 
 export const metadata: Metadata = {
     title: "Salud360",
@@ -9,11 +11,33 @@ export const metadata: Metadata = {
 const PrivateLayout = ({children} : Readonly<{children: React.ReactNode}> )=>{
 
     return(
-    <main className="min-h-screen bg-blue-600 container min-w-full">
-        <RouteProtection>
-            {children}
-        </RouteProtection>
-    </main>
+    <>
+    <Providers>
+        <Sidebar/>
+             <main className="min-h-screen container min-w-full flex bg-blue-600">
+ 
+            <Toaster
+                position="top-right"
+                
+                toastOptions={{
+                    success:{
+                        style:{
+                            background: "#abffad"
+                        }
+                    },
+                    error:{
+                        style:{
+                            background: "ffabab"
+                        }
+                    }
+                }}
+                />
+            
+                {children}
+            </main>
+       
+    </Providers> 
+    </>
     )
 };
 

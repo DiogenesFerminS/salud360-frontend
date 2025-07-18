@@ -67,6 +67,7 @@ const Page = () => {
         const url = `${process.env.NEXT_PUBLIC_URL_BACKEND}/api/users/login`;
 
         const data = await fetch(url,{
+          credentials:'include',
           method: "POST",
           headers:{
             'Content-Type': 'application/json'
@@ -85,7 +86,7 @@ const Page = () => {
             msg: message,
           });
           return;
-        };
+        }
 
         setHasError({
           error:false,
@@ -93,11 +94,9 @@ const Page = () => {
           msg:"Logging in...",
         });
 
-        const {JWT}= await data.json();
-        localStorage.setItem('salud360_token_auth', JWT);
         onResetForm();
+        router.push('/dashboard');
 
-        router.push('/admin');
       } catch (error) {
         if(error instanceof Error){
           setHasError({
@@ -123,15 +122,13 @@ const Page = () => {
               </div>
         </article>
     
-        <article className="bg-gray-50 p-5 rounded-lg shadow-lg animate-fade-in-up min-w-90">
+        <article className="bg-gray-50 p-5 rounded-lg shadow-lg animate-fade-in-up w-90">
               <span className="text-3xl font-semibold mx-auto text-center block text-blue-400 mb-3">Welcome Back</span>
 
               {
                 hasError.isActive 
                 ?(
-                  <>
                     <Alert msg={hasError.msg} error={hasError.error}/>
-                  </>
                  )
                 : <></>
               }

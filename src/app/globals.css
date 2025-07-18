@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin "@midudev/tailwind-animations";
+
+*{
+user-select: none;
+}

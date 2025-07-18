@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import "./globals.css";
-import Providers from "./context/Providers";
 
 export const metadata: Metadata = {
     title: "Salud360",
@@ -13,7 +12,7 @@ const RootLayout = ({children} : Readonly<{children: React.ReactNode}>)=>{
         <html lang="en">
 
             <body>
-                <Providers> {children} </Providers>
+                {children}
             </body>
         
         </html>

@@ -87,11 +87,6 @@ const Page = () => {
         }
     }
   };
-
-  const onCloseModal = () =>{
-    setOpenModal(false);
-  };
-
     const toggleShowPassword = (e: FormEvent)=>{
     e.preventDefault();
     setShowPassword(!showPassword);
@@ -102,7 +97,6 @@ const Page = () => {
     <>
     <Modal
       isOpen={openModal}
-      onRequestClose={onCloseModal}
     >
       <div
         className="flex justify-center items-center p-4 animate-zoom-in flex-col"

@@ -7,11 +7,10 @@ if (typeof window !== 'undefined') {
 
 interface ModalProps extends Partial<ReactModal> {
   isOpen: boolean;
-  onRequestClose: () => void;
   children: React.ReactNode;
 }
 
-export const Modal = ({isOpen, onRequestClose, children} : ModalProps)=>{
+export const Modal = ({isOpen, children} : ModalProps)=>{
 
     const customStyles: ReactModal.Styles = {
         overlay: {
@@ -37,7 +36,6 @@ export const Modal = ({isOpen, onRequestClose, children} : ModalProps)=>{
     return (
         <ReactModal
             isOpen={isOpen}
-            onRequestClose={onRequestClose}
             style={customStyles}
         >
             {children}
